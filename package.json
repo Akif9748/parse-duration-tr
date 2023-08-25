@@ -1,0 +1,30 @@
+{
+  "name": "parse-duration-tr",
+  "version": "1.0.0",
+  "description": "Yazıları süreye çevirir.",
+  "keywords": [
+    "parse",
+    "duration",
+    "time",
+    "tr",
+    "asr",
+    "türkçe",
+    "turkish",
+    "zaman",
+    "insan",
+    "süre"
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": "git://github.com/Akif9748/parse-duration-tr.git",
+  "bugs": "https://github.com/Akif9748/parse-duration-tr/issues",
+  "author": "Akif9748",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "license": "MIT"
+}
