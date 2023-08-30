@@ -55,7 +55,10 @@ const unitRatio = str => parse[str.toLowerCase()] || 1;
 function parse(input = "", format = "ms") {
   let result = 0;
 
-  String(input).replace(/(\d)[,_](\d)/g, "$1$2")
+  String(input)
+    .replace(/(\d)[_ ](\d)/g, '$1$2')  // ignore placeholders
+    .replace(/(\d)[,](\d)/g, '$1.$2') // normalize separators
+    .replace(/(\d)\.(?=\d+\.)/g, '$1') // decimal fraction
     .replace(durationRE, (_, n, units) =>
       (units = unitRatio(units)) &&
       (result += Math.abs(parseFloat(n)) * units)

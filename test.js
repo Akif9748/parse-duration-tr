@@ -14,7 +14,7 @@ t('combined', t => {
 	assert.strictEqual(parse('01sa20d00s'), 1 * h + 20 * m)
 	assert.strictEqual(parse('1sa 20dk'), 1 * h + 20 * m)
 	assert.strictEqual(parse('1 sa 20 dk'), 1 * h + 20 * m)
-	assert.strictEqual(parse('27,681 ns'), 27681 * ns)
+	assert.strictEqual(parse('.5 s'), 500)
 	assert.strictEqual(parse('27_681 ns'), 27681 * ns)
 	assert.strictEqual(parse('running length: 1saat:20dk'), 1 * h + 20 * m)
 	assert.strictEqual(parse('2sa -40dk'), 2 * h + 40 * m)
@@ -47,4 +47,16 @@ t('no-units', t => {
 t('unicode support', t => {
 	parse['сек'] = parse['s'] // ru seconds
 	assert.strictEqual(parse('5сек'), 5000);
+})
+
+t('local number formats', t => {
+	assert.strictEqual(parse('3.14 saniye'), 3140)
+	assert.strictEqual(parse('3,14 saniye'), 3140)
+	assert.strictEqual(parse('"1,23,456.789 saniye'), 123456789)
+	assert.strictEqual(parse('"1,23,456.789s'), 123456789)
+	assert.strictEqual(parse('"123.456,789 saniye'), 123456789)
+	assert.strictEqual(parse('"30,000.65 saniye'), 30000650)
+	assert.strictEqual(parse('"30.000,65 saniye'), 30000650)
+	assert.strictEqual(parse('"30 000,65 saniye'), 30000650)
+	assert.strictEqual(parse('"30_000,65 saniye'), 30000650)
 })
