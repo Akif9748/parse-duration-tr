@@ -96,3 +96,4 @@ parse('1 saat 20 dakika', 'dakika') // => 80
 Geliştirilmiş özellikler:
 - Çıkış olarak null değil 0 döndürür.
 - Eğer stringde farklı karakter varsa null döndürmez. Yine de parselemeye çalışır.
+- Artık virgüller de kesiri ayırır.
